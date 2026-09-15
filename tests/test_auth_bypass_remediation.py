@@ -3,7 +3,6 @@ import unittest
 from examples.remediation.auth_bypass_guard import AuthSettings, UnsafeAuthConfiguration
 
 
-
 class AuthBypassRemediationTests(unittest.TestCase):
     def test_secure_defaults_are_valid(self) -> None:
         settings = AuthSettings()

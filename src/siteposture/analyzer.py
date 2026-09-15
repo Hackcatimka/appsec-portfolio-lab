@@ -3,7 +3,6 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import asdict, dataclass
 
-
 HeaderBag = dict[str, list[str]]
 
 

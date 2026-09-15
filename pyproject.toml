@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "siteposture"
+version = "0.1.0"
+description = "Safe-by-default HTTP response security posture checker"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Hackcatimka"}]
+keywords = ["appsec", "security-headers", "devsecops"]
+
+[project.scripts]
+siteposture = "siteposture.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+

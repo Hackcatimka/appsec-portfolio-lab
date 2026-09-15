@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+dist/
+build/
+*.egg-info/
+
+# Local source snapshots and downloaded archives are evidence inputs, not portfolio content.
+targets/
+*.zip
+
+# Scanner output may contain absolute paths or sensitive evidence.
+raw-reports/
+
+

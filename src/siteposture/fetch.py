@@ -30,10 +30,10 @@ def fetch_once(url: str, timeout: float = 10.0) -> ResponseSnapshot:
     request = Request(url, headers={"User-Agent": "SitePosture/0.1 (+defensive single-request check)"}, method="GET")
     opener = build_opener(NoRedirects)
     try:
-        with opener.open(request, timeout=timeout) as response:
+        # The URL is intentionally user-supplied; only absolute HTTP(S) URLs pass
+        # validation above and redirects are disabled by the custom opener.
+        with opener.open(request, timeout=timeout) as response:  # noqa: S310  # nosec B310
             response.read(1)
             return ResponseSnapshot(response.geturl(), response.status, normalize_headers(response.headers.items()))
     except HTTPError as response:
         return ResponseSnapshot(url, response.code, normalize_headers(response.headers.items()))
-
-

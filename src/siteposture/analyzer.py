@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
-from typing import Iterable
 
 
 HeaderBag = dict[str, list[str]]
@@ -81,12 +81,10 @@ def as_jsonable(findings: list[Finding]) -> list[dict[str, str]]:
 
 
 def as_markdown(findings: list[Finding], target: str) -> str:
-    lines = [f"# SitePosture report", "", f"Target: `{target}`", "", f"Findings: **{len(findings)}**", ""]
+    lines = ["# SitePosture report", "", f"Target: `{target}`", "", f"Findings: **{len(findings)}**", ""]
     if not findings:
         lines.append("No header-posture issues were detected by this limited check.")
         return "\n".join(lines)
     for item in findings:
         lines.extend([f"## [{item.severity.upper()}] {item.title}", "", f"Rule: `{item.rule_id}`", "", f"Evidence: {item.evidence}", "", f"Recommendation: {item.remediation}", ""])
     return "\n".join(lines)
-
-

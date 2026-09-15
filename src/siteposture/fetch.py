@@ -27,7 +27,11 @@ def fetch_once(url: str, timeout: float = 10.0) -> ResponseSnapshot:
     if parsed.username or parsed.password:
         raise ValueError("Credentials in URLs are not allowed")
 
-    request = Request(url, headers={"User-Agent": "SitePosture/0.1 (+defensive single-request check)"}, method="GET")
+    request = Request(  # noqa: S310
+        url,
+        headers={"User-Agent": "SitePosture/0.1 (+defensive single-request check)"},
+        method="GET",
+    )
     opener = build_opener(NoRedirects)
     try:
         # The URL is intentionally user-supplied; only absolute HTTP(S) URLs pass

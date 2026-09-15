@@ -1,19 +1,7 @@
-import importlib.util
 import unittest
-from pathlib import Path
 
+from examples.remediation.auth_bypass_guard import AuthSettings, UnsafeAuthConfiguration
 
-EXAMPLE_PATH = (
-    Path(__file__).resolve().parents[1] / "examples" / "remediation" / "auth_bypass_guard.py"
-)
-SPEC = importlib.util.spec_from_file_location("auth_bypass_guard", EXAMPLE_PATH)
-if SPEC is None or SPEC.loader is None:
-    raise RuntimeError("Unable to load the remediation example")
-auth_bypass_guard = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(auth_bypass_guard)
-
-AuthSettings = auth_bypass_guard.AuthSettings
-UnsafeAuthConfiguration = auth_bypass_guard.UnsafeAuthConfiguration
 
 
 class AuthBypassRemediationTests(unittest.TestCase):
